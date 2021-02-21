@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 
 html_code=requests.get('https://www.imdb.com/search/title/?groups=top_1000').text
-
+soup=BeautifulSoup(html_code,'lxml')
 def delete_1(a):
     a=a.replace('\n','')
     return a.strip()
@@ -39,7 +39,7 @@ for i in range(0,len(soup.find_all('div',class_='lister-item-content'))):
     A.append(Directors)
     A.append(Stars)
     
-    year=a.find('span',class_='lister-item-year text-muted unbold').text
+    year=soup_1.find('span',class_='lister-item-year text-muted unbold').text
     A.append(int(year[1:len(year)-1]))
     
     
